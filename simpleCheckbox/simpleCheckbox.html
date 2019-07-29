@@ -1,0 +1,26 @@
+<template>
+    <ul class="slds-list_ordered">
+        <template for:each={Accounts.data} for:item="acct">
+            <li key={acct.Id}>
+                {acct.Name}
+            </li>
+        </template>
+    </ul>
+    <hr>
+    <p>Agents already on the deal</p>
+    <ul class="slds-list_ordered">
+        <template for:each={existingComms} for:item="ec">
+            <li key={ec.Agent__c}>
+                {ec.Agent__c}, {ec.Id}
+            </li>
+        </template>
+    </ul>
+    <hr>
+    <lightning-checkbox-group name="Checkbox Group"
+                        label="Select an Agent"
+                        options={comms}
+                        value={selectedOptions}
+                        onchange={handleChange}>
+    </lightning-checkbox-group>
+    <p>Selected Values are: {selectedValues}</p>
+</template>
